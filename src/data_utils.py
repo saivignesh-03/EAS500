@@ -204,6 +204,25 @@ def fill_missing_rides_full_range(df, hour_col, location_col, rides_col):
     merged_df[rides_col] = merged_df[rides_col].fillna(0).astype(int)
 
     return merged_df
+def transform_ts_data_info_features(df, window_size=24*28, step_size=24):
+    """
+    Transform time series data into features only (without targets)
+    
+    Args:
+        df (pd.DataFrame): Input DataFrame with pickup_hour, pickup_location_id, and rides columns
+        window_size (int): Size of the sliding window for creating features
+        step_size (int): Number of steps to slide the window
+        
+    Returns:
+        pd.DataFrame: Features DataFrame
+    """
+    # Reuse existing function but only return features
+    features, _ = transform_ts_data_info_features_and_target(
+        df,
+        window_size=window_size,
+        step_size=step_size
+    )
+    return features
 
 def transform_raw_data_into_ts_data(rides: pd.DataFrame) -> pd.DataFrame:
     """

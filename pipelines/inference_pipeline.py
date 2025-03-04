@@ -8,7 +8,7 @@ from src.inference import (
     get_model_predictions,
     load_model_from_registry,
 )
-
+from src.data_utils import transform_ts_data_info_features
 # Get the current datetime64[us, Etc/UTC]
 # for number in range(22, 24 * 29):
 # current_date = pd.Timestamp.now(tz="Etc/UTC") - timedelta(hours=number)
